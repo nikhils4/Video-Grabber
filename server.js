@@ -4,32 +4,38 @@ const fs = require('fs');
 const video = require('./video.js');
 
 
-const port = process.env.PORT || 3000;
+const port =3000;
 
 var app = express();
-app.use(express.static(__dirname + '/views/images') );
+app.use(express.static(__dirname + '/views') );
 app.set('view engine', hbs);
 
 
 app.get('/', (req,res) => {
-    res.render('front.hbs');
+    res.render('index.hbs');
 });
 
 
+
+
 app.get('/download', (req,res) => {
-    video.getvideo((error,video) => {
+    
+    //var myText= req.query.video;
+    //module.exports.URL=myText;
+   //const video = require('./video.js');
+    video.getVideo(req.query.video,(error,video) => {
         if(error){
-            res.render('error.hbs')
+            res.render('error.hbs' ,{
+                error:error
+            
+            })
         }
     else{
-        res.render('result.hbs', {
-            video: video.message
-        })
+        console.log(video.items);
     }
 })
 });
 
-    
 
 
 app.listen(port, () => {

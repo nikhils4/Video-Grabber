@@ -1,18 +1,22 @@
 <html>
 <head>
+    <title> Video Grabber.IO</title>
 <link rel="stylesheet" type="text/css" href="front.css"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link rel="shortcut icon" type="image/png" href="img/icon.png"/>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 <script src="js/jquery-3.3.1.js"></script>
 
+
 <script>
-  $(document).ready(function()
-  {
-       $("h1").animate({right:'510px'},1500);
+//   $(document).ready(function()
+//   {
+//        $("h1").animate({right:'510px'},1500);
        
         
- });
+//  });
 
 </script>
 
@@ -20,7 +24,17 @@
 </head>
 <body>
 
+   
+
+    <div class="image">
+
+        
+            <img src="img/icon.png">
+    </div>
+
+
     <div class="header">
+
 
     <h1>  VideoGrabber.io</h1>
 
@@ -30,7 +44,7 @@
 
         <form method="get" action="/download"> 
 
-            <input  class="URL-enter" type="text" placeholder="Paste the Youtube Link......">
+            <input  class="URL-enter" name="video" type="text" placeholder="Paste the Youtube Link......">
 
         
 

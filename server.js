@@ -1,11 +1,11 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-var youtubedl = require('youtube-dl');
+var ytdl = require('ytdl-core');
 // const video = require('./video.js');
 
 
-const port =3000;
+const port =3500;
 
 var app = express();
 app.use(express.static(__dirname + '/views') );
@@ -17,35 +17,13 @@ app.get('/', (req,res) => {
 });
 
 app.get('/download', (req,res) => {
-    var video = youtubedl(req.query.video);
-    video.on('info', function(info) {
-        console.log('Download started');
-        console.log('filename: ' + info._filename);
-        console.log('size: ' + info.size);
-    });
-
-    video.pipe(fs.createWriteStream('myvideo.mp4'));
+    var URL = req.query.video;
+    console.log(URL);
+    res.header('Content-Disposition', 'attachment; filename="video.mp4"');
+    ytdl(URL, {
+        format: 'mp4'
+    }).pipe(res);
 });
-
-
-// app.get('/download', (req,res) => {
-    
-    //var myText= req.query.video;
-    //module.exports.URL=myText;
-   //const video = require('./video.js');
-   //  video.getVideo(req.query.video,(error,video) => {
-   //      if(error){
-   //          res.render('error.hbs' ,{
-   //              error : "Page "
-   //
-   //          })
-   //      }
-   //  else{
-   //      console.log(req.query.video);
-   // }
-// // })
-// });
-
 
 
 app.listen(port, () => {
